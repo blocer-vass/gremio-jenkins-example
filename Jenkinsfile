@@ -3,7 +3,10 @@ pipeline {
     
     parameters {
         string(name: 'NAME', defaultValue: 'gremio-example', description: 'name image')
+        string(name: 'APP', defaultValue: 'gremio-example', description: 'name image')
     }
+    triggers { pollSCM('* * * * *') }
+    
     
     stages {
         stage('download git repo'){
