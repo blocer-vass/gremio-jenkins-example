@@ -3,7 +3,7 @@ pipeline {
     
     parameters {
         string(name: 'NAME', defaultValue: 'gremio-example', description: 'name image')
-        string(name: 'APP', defaultValue: 'gremio-example', description: 'name image')
+        string(name: 'APP2', defaultValue: 'gremio-example', description: 'name image')
     }
     triggers { pollSCM('* * * * *') }
     
@@ -30,6 +30,13 @@ pipeline {
     steps {
         script {
             docker.build("${params.NAME}:${env.BUILD_ID}")
+        }
+    }
+}
+	    stage ('print'){
+    steps {
+        script {
+            echo APP2
         }
     }
 }
